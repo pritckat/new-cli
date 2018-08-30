@@ -9,10 +9,13 @@ class CLI
     puts "What would you like to do?"
     input = gets.strip
     if input == 'teams'
+      self.list_teams
 
     elsif input == 'players'
+      self.list_players
 
     elsif input == 'characters'
+      self.list_characters
     end
     until input == 'exit'
       input = gets.strip
@@ -20,5 +23,16 @@ class CLI
 
   end
 
+  def list_teams
+    puts Team.all
+  end
+
+  def list_players
+    Player.all
+  end
+
+  def list_characters
+    Character.all
+  end
 
 end
