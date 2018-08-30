@@ -1,26 +1,33 @@
 class CLI
 
   def initialize
+    self.menu
+  end
+
+  def menu
+
+    input = ""
     puts "Welcome to Overwatch World Cup Team Overview 2018!"
     puts "To see a list of teams, type 'teams'."
     puts "To see a list of players, type 'players'."
     puts "To see a list of characters, type 'characters'."
-    puts "To exit, type exit."
+    puts "To exit, type 'exit'."
     puts "What would you like to do?"
-    input = gets.strip
-    if input == 'teams'
-      self.list_teams
-
-    elsif input == 'players'
-      self.list_players
-
-    elsif input == 'characters'
-      self.list_characters
-    end
-    until input == 'exit'
+    while input != 'exit'
       input = gets.strip
-    end
+      case input
+      when 'teams'
+        self.list_teams
 
+      when 'players'
+        self.list_players
+
+      when 'characters'
+        self.list_characters
+      when 'exit'
+        puts "Goodbye!"
+      end
+    end
   end
 
   def list_teams
