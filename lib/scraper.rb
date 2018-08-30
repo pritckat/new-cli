@@ -7,10 +7,13 @@ class Scraper
   def self.scrape_team_page
 
     doc = Nokogiri::HTML(open("https://liquipedia.net/overwatch/Overwatch_World_Cup/2018/Rosters"))
-    teams = []
+    #teams = []
     doc.css(".template-box").each do |teamcard|
+      team_url = teamcard.css("b a").attribute("href").value
       team_name = teamcard.css("b a").attribute("title").value
-      teams << {name: team_name}
+      team = Team.new(team_name, team_url)
+      Team.all << team
+      #teams << {name: team_name}
     end
     binding.pry
   end

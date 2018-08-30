@@ -28,16 +28,19 @@ class CLI
     when 'exit'
       puts "Goodbye!"
 
+    else
+      menu
+
     end
   end
 
   def list_teams
     Team.all.each_with_index do |team, index|
-      puts "#{index + 1}. #{team}"
+      puts "#{index + 1}. #{team.name}"
     end
     puts "Please type the number of the team you'd like to look at."
     puts "Or type 'menu' to return to the main menu."
-    input = gets
+    input = gets.strip
     if input == 'menu'
       self.menu
     else
