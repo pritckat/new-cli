@@ -1,6 +1,7 @@
 class CLI
 
   def initialize
+    Scraper.scrape_team_page
     self.menu
   end
 
@@ -46,11 +47,33 @@ class CLI
   end
 
   def list_players
-    Player.all
+    Player.all.each_with_index do |player, index|
+      puts "#{index + 1}. #{player}"
+    end
+    puts "Please type the number of the player you'd like to look at."
+    puts "Or type 'menu' to return to the main menu."
+    input = gets
+    if input == 'menu'
+      self.menu
+    else
+      index = input.to_i - 1
+      puts Player.all[index]
+    end
   end
 
   def list_characters
-    Character.all
+    Character.all.each_with_index do |character, index|
+      puts "#{index + 1}. #{character}"
+    end
+    puts "Please type the number of the character you'd like to look at."
+    puts "Or type 'menu' to return to the main menu."
+    input = gets
+    if input == 'menu'
+      self.menu
+    else
+      index = input.to_i - 1
+      puts Character.all[index]
+    end
   end
 
 end
