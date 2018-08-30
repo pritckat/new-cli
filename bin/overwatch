@@ -6,4 +6,5 @@ require_relative "../lib/teams.rb"
 require_relative "../lib/characters.rb"
 
 Team.all << "Test"
+Team.all << "Test 2"
 CLI.new

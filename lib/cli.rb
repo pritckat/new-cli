@@ -13,25 +13,36 @@ class CLI
     puts "To see a list of characters, type 'characters'."
     puts "To exit, type 'exit'."
     puts "What would you like to do?"
-    while input != 'exit'
-      input = gets.strip
-      case input
-      when 'teams'
-        self.list_teams
+    input = gets.strip
+    case input
+    when 'teams'
+      self.list_teams
 
-      when 'players'
-        self.list_players
+    when 'players'
+      self.list_players
 
-      when 'characters'
-        self.list_characters
-      when 'exit'
-        puts "Goodbye!"
-      end
+    when 'characters'
+      self.list_characters
+
+    when 'exit'
+      puts "Goodbye!"
+
     end
   end
 
   def list_teams
-    puts Team.all
+    Team.all.each_with_index do |team, index|
+      puts "#{index + 1}. #{team}"
+    end
+    puts "Please type the number of the team you'd like to look at."
+    puts "Or type 'menu' to return to the main menu."
+    input = gets
+    if input == 'menu'
+      self.menu
+    else
+      index = input.to_i - 1
+      puts Team.all[index]
+    end
   end
 
   def list_players
