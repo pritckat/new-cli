@@ -20,6 +20,7 @@ class Scraper
           player = Player.new(player_name)
           Player.all << player
           team.roster << player
+          player.team = team
         end
       end
     end
