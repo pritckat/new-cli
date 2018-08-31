@@ -54,7 +54,7 @@ class CLI
         puts "Region: #{selected.region}"
         puts "Coach: #{selected.coach}"
         puts "Players:"
-        Team.all[index].roster.each do |player|
+        selected.roster.each do |player|
           puts "#{player.name}"
         end
         list_player_information
@@ -67,7 +67,7 @@ class CLI
 
   def list_players
     Player.all.each_with_index do |player, index|
-      puts "#{index + 1}. #{player.name} -- #{player.player_url}"
+      puts "#{index + 1}. #{player.name}"
     end
     list_player_information
   end

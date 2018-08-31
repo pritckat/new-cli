@@ -41,11 +41,16 @@ class Scraper
   end
 
   def self.scrape_team_profile(team)
-
-    @team_page = Nokogiri::HTML(open(team.url))
     information = []
-    @team_page.css(".infobox-cell-2").each do |info|
-      information << info.text
+    begin
+      @team_page = Nokogiri::HTML(open(team.url))
+    rescue OpenURI::Error
+      puts "Sorry"
+      exit
+    else
+      @team_page.css(".infobox-cell-2").each do |info|
+        information << info.text
+      end
     end
     information
 
