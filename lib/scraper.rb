@@ -17,8 +17,9 @@ class Scraper
     removable = @doc.css(".team-template-team-part")
     removable.remove
     @doc.css(".teamcard-inner table tbody tr td").each do |t|
-      player = t.css("a").text
-      roster << player
+      player_name = t.css("a").text
+      player = Player.new
+      Player.all << player
     end
     binding.pry
   end
