@@ -45,9 +45,14 @@ class CLI
       self.menu
     else
       index = input.to_i - 1
-      puts "#{Team.all[index].name}:"
-      Team.all[index].roster.each do |player|
-        puts player.name
+      if index >=0 && index <= 24
+        puts "#{Team.all[index].name}:"
+        Team.all[index].roster.each do |player|
+          puts player.name
+        end
+        list_player_information
+      else
+        list_teams
       end
 
     end
@@ -57,6 +62,10 @@ class CLI
     Player.all.each_with_index do |player, index|
       puts "#{index + 1}. #{player.name}"
     end
+    list_player_information
+  end
+
+  def list_player_information
     puts "Please type the number of the player whose stats you'd like to see."
     puts "Or type 'menu' to return to the main menu."
     input = gets.strip
