@@ -66,14 +66,13 @@ class CLI
   end
 
   def list_player_information
-    puts "Please type the number of the player whose stats you'd like to see."
+    puts "Please type the name of the player whose stats you'd like to see."
     puts "Or type 'menu' to return to the main menu."
     input = gets.strip
     if input == 'menu'
       self.menu
     else
-      index = input.to_i - 1
-      selected = Player.all[index]
+      selected = Player.find_by_name(input)
       selected.apply_attributes
       puts selected.name
       puts selected.regular_season_team
