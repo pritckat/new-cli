@@ -32,6 +32,6 @@ class Scraper
     @profile_page.css(".infobox-cell-2").each do |info|
       information << info.text
     end
-    binding.pry
+    information
   end
 end

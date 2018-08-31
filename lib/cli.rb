@@ -66,8 +66,16 @@ class CLI
       index = input.to_i - 1
       selected = Player.all[index]
       puts Player.all[index].name
-      Scraper.scrape_profile_page(selected.player_url)
-      #puts selected.player_url
+      information = Scraper.scrape_profile_page(selected.player_url)
+      #this should be its own method eventually
+      binding.pry
+      information.each_with_index do |info, i|
+        if info[i] == "Team: "
+          selected.regular_season_team = "cucumber"
+        end
+      end
+      puts selected.regular_season_team
+      puts information
     end
   end
 
