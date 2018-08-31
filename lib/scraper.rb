@@ -26,8 +26,8 @@ class Scraper
     end
   end
 
-  def self.scrape_profile_page(profile_url)
-    @profile_page = Nokogiri::HTML(open(profile_url))
+  def self.scrape_profile_page(player)
+    @profile_page = Nokogiri::HTML(open(player.player_url))
     information = []
     @profile_page.css(".infobox-cell-2").each do |info|
       information << info.text

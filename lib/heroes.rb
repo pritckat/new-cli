@@ -1,4 +1,4 @@
-class Character
+class Hero
 
   @@all = []
 

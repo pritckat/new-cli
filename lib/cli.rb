@@ -11,7 +11,7 @@ class CLI
     puts "Welcome to Overwatch World Cup Team Overview 2018!"
     puts "To see a list of teams, type 'teams'."
     puts "To see a list of players, type 'players'."
-    puts "To see a list of characters, type 'characters'."
+    puts "To see a list of characters, type 'heroes'."
     puts "To exit, type 'exit'."
     puts "What would you like to do?"
     input = gets.strip
@@ -22,8 +22,8 @@ class CLI
     when 'players'
       self.list_players
 
-    when 'characters'
-      self.list_characters
+    when 'heroes'
+      self.list_heroes
 
     when 'exit'
       puts "Goodbye!"
@@ -66,7 +66,7 @@ class CLI
       index = input.to_i - 1
       selected = Player.all[index]
       puts selected.name
-      information = Scraper.scrape_profile_page(selected.player_url)
+      information = Scraper.scrape_profile_page(selected)
       #this should be its own method eventually
       information.each_with_index do |info, i|
         if info == "Team:"
@@ -83,18 +83,18 @@ class CLI
     end
   end
 
-  def list_characters
-    Character.all.each_with_index do |character, index|
-      puts "#{index + 1}. #{character}"
+  def list_heroes
+    Hero.all.each_with_index do |hero, index|
+      puts "#{index + 1}. #{hero}"
     end
-    puts "Please type the number of the character you'd like to look at."
+    puts "Please type the number of the hero you'd like to look at."
     puts "Or type 'menu' to return to the main menu."
     input = gets.strip
     if input == 'menu'
       self.menu
     else
       index = input.to_i - 1
-      puts Character.all[index]
+      puts Hero.all[index]
     end
   end
 

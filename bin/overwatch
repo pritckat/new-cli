@@ -3,7 +3,8 @@
 require_relative "../lib/cli.rb"
 require_relative "../lib/player.rb"
 require_relative "../lib/teams.rb"
-require_relative "../lib/characters.rb"
+require_relative "../lib/heroes.rb"
 require_relative "../lib/scraper.rb"
+#require_relative "../lib/findable/findable.rb"
 
 CLI.new
