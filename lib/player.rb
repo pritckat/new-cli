@@ -13,4 +13,21 @@ class Player
     @@all
   end
 
+  def self.find_by_name(name)
+    self.all.detect {|n| n.name == name}
+  end
+
+  def apply_attributes
+    information = Scraper.scrape_profile_page(self)
+    information.each_with_index do |info, i|
+      if info == "Team:"
+        self.regular_season_team = information[i + 1]
+      elsif info == "Common Team Role(s):"
+        self.role = information[i + 1]
+      elsif info == "Signature Hero:"
+        self.signature_hero = information[i + 1]
+      end
+    end
+  end
+
 end

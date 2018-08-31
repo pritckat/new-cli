@@ -65,18 +65,8 @@ class CLI
     else
       index = input.to_i - 1
       selected = Player.all[index]
+      selected.apply_attributes
       puts selected.name
-      information = Scraper.scrape_profile_page(selected)
-      #this should be its own method eventually
-      information.each_with_index do |info, i|
-        if info == "Team:"
-          selected.regular_season_team = information[i + 1]
-        elsif info == "Common Team Role(s):"
-          selected.role = information[i + 1]
-        elsif info == "Signature Hero:"
-          selected.signature_hero = information[i + 1]
-        end
-      end
       puts selected.regular_season_team
       puts selected.role
       puts selected.signature_hero
