@@ -11,7 +11,7 @@ class CLI
     puts "Welcome to Overwatch World Cup Team Overview 2018!"
     puts "To see a list of teams, type 'teams'."
     puts "To see a list of players, type 'players'."
-    puts "To see a list of characters, type 'heroes'."
+    puts "To see a list of heroes, type 'heroes'."
     puts "To exit, type 'exit'."
     puts "What would you like to do?"
     input = gets.strip
@@ -74,9 +74,10 @@ class CLI
     else
       selected = Player.find_by_name(input)
       selected.apply_attributes
+      signature_heroes = selected.signature_hero.join(", ")
       puts "Regular Season Team: #{selected.regular_season_team}"
       puts "Role: #{selected.role}"
-      puts "Signature Heroes: #{selected.signature_hero}"
+      puts "Signature Heroes: #{signature_heroes}"
       puts "Liquipedia Page: #{selected.player_url}"
       puts "Would you like to see another player? Y/n"
       new_input = gets.strip
