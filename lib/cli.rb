@@ -64,7 +64,10 @@ class CLI
       self.menu
     else
       index = input.to_i - 1
+      selected = Player.all[index]
       puts Player.all[index].name
+      Scraper.scrape_profile_page(selected.player_url)
+      #puts selected.player_url
     end
   end
 

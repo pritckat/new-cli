@@ -24,14 +24,14 @@ class Scraper
         end
       end
     end
-  #  roster = []
-  #  removable = @doc.css(".team-template-team-part")
-  #  removable.remove
-  #  @doc.css(".teamcard-inner table tbody tr td").each do |t|
-  #    player_name = t.css("a").text
-  #    player = Player.new
-  #    Player.all << player
-  #  end
-  #  binding.pry
+  end
+
+  def self.scrape_profile_page(profile_url)
+    @profile_page = Nokogiri::HTML(open(profile_url))
+    information = []
+    @profile_page.css(".infobox-cell-2").each do |info|
+      information << info.text
+    end
+    binding.pry
   end
 end
