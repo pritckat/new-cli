@@ -1,8 +1,6 @@
 # New::Cli
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/new/cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem can be used to view the current teams competing in the 2018 Overwatch World Cup and review individual player statistics when available.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run the program after installation, navigate to 'new-cli' and type bin/overwatch and follow menu instructions.
 
 ## Development
 

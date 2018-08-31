@@ -30,6 +30,7 @@ class Cli
 
     when 'exit'
       puts "Goodbye!"
+      exit
 
     else
       menu
@@ -69,8 +70,9 @@ class Cli
   end
 
   def list_players
+    Player.all.sort! {|a,b| a.name <=> b.name}
     Player.all.each_with_index do |player, index|
-      puts "#{index + 1}. #{player.name}"
+      puts "#{index + 1}. #{player.name} -- #{player.team.name}"
     end
     list_player_information
   end
@@ -84,7 +86,7 @@ class Cli
     else
       selected = Player.find_by_name(input)
       selected.apply_attributes
-      signature_heroes = selected.signature_hero.join(", ")
+      signature_heroes = selected.signature_hero.join(", ") if selected.signature_hero != nil
       puts "Regular Season Team: #{selected.regular_season_team}"
       puts "Role: #{selected.role}"
       puts "Signature Heroes: #{signature_heroes}"
