@@ -23,7 +23,7 @@ class Team
         self.coach = information[i + 1]
       end
     end
-    binding.pry
+    #binding.pry
   end
 
 end

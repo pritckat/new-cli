@@ -18,7 +18,6 @@ class Cli
     puts "Welcome to Overwatch World Cup Team Overview 2018!"
     puts "To see a list of teams, type 'teams'."
     puts "To see a list of players, type 'players'."
-    puts "To see a list of heroes, type 'heroes'."
     puts "To exit, type 'exit'."
     puts "What would you like to do?"
     input = gets.strip
@@ -28,9 +27,6 @@ class Cli
 
     when 'players'
       self.list_players
-
-    when 'heroes'
-      self.list_heroes
 
     when 'exit'
       puts "Goodbye!"
@@ -100,21 +96,6 @@ class Cli
       else
         menu
       end
-    end
-  end
-
-  def list_heroes
-    Hero.all.each_with_index do |hero, index|
-      puts "#{index + 1}. #{hero}"
-    end
-    puts "Please type the number of the hero you'd like to look at."
-    puts "Or type 'menu' to return to the main menu."
-    input = gets.strip
-    if input == 'menu'
-      self.menu
-    else
-      index = input.to_i - 1
-      puts Hero.all[index]
     end
   end
 
