@@ -25,7 +25,7 @@ class Player
       elsif info == "Common Team Role(s):"
         self.role = information[i + 1]
       elsif info == "Signature Hero:"
-        self.signature_hero = information[i + 1]
+        self.signature_hero = information[i + 1].split
       end
     end
   end
