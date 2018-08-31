@@ -30,11 +30,17 @@ class Scraper
   end
 
   def self.scrape_profile_page(player)
+    begin
 
-    @profile_page = Nokogiri::HTML(open(player.player_url))
-    information = []
-    @profile_page.css(".infobox-cell-2").each do |info|
-      information << info.text
+      @profile_page = Nokogiri::HTML(open(player.player_url))
+    rescue
+      puts "Sorry, this player has no profile page available."
+      Cli.all[0].list_player_information
+    else
+      information = []
+      @profile_page.css(".infobox-cell-2").each do |info|
+        information << info.text
+      end
     end
     information
 
@@ -42,15 +48,10 @@ class Scraper
 
   def self.scrape_team_profile(team)
     information = []
-    begin
-      @team_page = Nokogiri::HTML(open(team.url))
-    rescue OpenURI::Error
-      puts "Sorry"
-      exit
-    else
-      @team_page.css(".infobox-cell-2").each do |info|
-        information << info.text
-      end
+    html = open(team.url)
+    @team_page = Nokogiri::HTML(html)
+    @team_page.css(".infobox-cell-2").each do |info|
+      information << info.text
     end
     information
 

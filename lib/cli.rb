@@ -1,8 +1,15 @@
-class CLI
+class Cli
+
+  @@all = []
 
   def initialize
     Scraper.scrape_team_page
+    @@all << self
     self.menu
+  end
+
+  def self.all
+    @@all
   end
 
   def menu

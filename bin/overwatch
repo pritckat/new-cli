@@ -7,4 +7,4 @@ require_relative "../lib/heroes.rb"
 require_relative "../lib/scraper.rb"
 #require_relative "../lib/findable/findable.rb"
 
-CLI.new
+Cli.new
