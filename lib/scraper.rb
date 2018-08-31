@@ -16,8 +16,11 @@ class Scraper
       Team.all << team
       teamcard.css(".teamcard-inner table tbody tr td").each do |t|
         player_name = t.css("a").text
-        player = Player.new(player_name)
-        Player.all << player
+        if player_name != ""
+          player = Player.new(player_name)
+          Player.all << player
+          team.roster << player
+        end
       end
     end
   #  roster = []

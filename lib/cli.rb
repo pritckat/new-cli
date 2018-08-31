@@ -38,20 +38,24 @@ class CLI
     Team.all.each_with_index do |team, index|
       puts "#{index + 1}. #{team.name}"
     end
-    puts "Please type the number of the team you'd like to look at."
+    puts "Please type the number of the team whose roster you'd like to see."
     puts "Or type 'menu' to return to the main menu."
     input = gets.strip
     if input == 'menu'
       self.menu
     else
       index = input.to_i - 1
-      puts Team.all[index].name
+      puts "#{Team.all[index].name}:"
+      Team.all[index].roster.each do |player|
+        puts player.name
+      end
+
     end
   end
 
   def list_players
     Player.all.each_with_index do |player, index|
-      puts "#{index + 1}. #{player}"
+      puts "#{index + 1}. #{player.name}"
     end
     puts "Please type the number of the player you'd like to look at."
     puts "Or type 'menu' to return to the main menu."
