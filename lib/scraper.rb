@@ -33,7 +33,7 @@ class Scraper
     begin
 
       @profile_page = Nokogiri::HTML(open(player.player_url))
-    rescue
+    rescue #because some profile pages don't exist
       puts "Sorry, this player has no profile page available."
       Cli.all[0].list_player_information
     else

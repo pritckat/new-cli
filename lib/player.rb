@@ -4,7 +4,7 @@ class Player
 
   @@all = []
 
-  def initialize(name)
+  def initialize(name) #creates new Player and formats url
     @name = name
     url_name = name.slice(0,1).capitalize + name.slice(1..-1)
     @player_url = "https://liquipedia.net/overwatch/#{url_name}"

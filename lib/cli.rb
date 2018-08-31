@@ -2,7 +2,7 @@ class Cli
 
   @@all = []
 
-  def initialize
+  def initialize #scrapes team page and redirects to main menu
     Scraper.scrape_team_page
     @@all << self
     self.menu
@@ -12,7 +12,7 @@ class Cli
     @@all
   end
 
-  def menu
+  def menu #main menu
 
     input = ""
     puts "Welcome to Overwatch World Cup Team Overview 2018!"
@@ -38,7 +38,7 @@ class Cli
     end
   end
 
-  def list_teams
+  def list_teams #lists all competing teams and allows user to see information about one team and the team's roster
     Team.all.each_with_index do |team, index|
       puts "#{index + 1}. #{team.name}"
     end
@@ -69,7 +69,7 @@ class Cli
     end
   end
 
-  def list_players
+  def list_players #lists players then redirects to the player information menu
     Player.all.sort! {|a,b| a.name <=> b.name}
     Player.all.each_with_index do |player, index|
       puts "#{index + 1}. #{player.name} -- #{player.team.name}"
@@ -77,7 +77,7 @@ class Cli
     list_player_information
   end
 
-  def list_player_information
+  def list_player_information #allows user to find players by name
     puts "Please type the name of the player whose stats you'd like to see."
     puts "Or type 'menu' to return to the main menu."
     input = gets.strip
