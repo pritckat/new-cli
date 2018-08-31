@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-To run the program after installation, navigate to 'new-cli' and type bin/overwatch and follow menu instructions.
+To run the program after installation, navigate to 'new-cli' and type 'ruby bin/overwatch' and follow menu instructions.
 
 ## Development
 
