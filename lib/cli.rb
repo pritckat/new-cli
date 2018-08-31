@@ -57,7 +57,7 @@ class CLI
     Player.all.each_with_index do |player, index|
       puts "#{index + 1}. #{player.name}"
     end
-    puts "Please type the number of the player you'd like to look at."
+    puts "Please type the number of the player whose stats you'd like to see."
     puts "Or type 'menu' to return to the main menu."
     input = gets.strip
     if input == 'menu'
@@ -65,17 +65,21 @@ class CLI
     else
       index = input.to_i - 1
       selected = Player.all[index]
-      puts Player.all[index].name
+      puts selected.name
       information = Scraper.scrape_profile_page(selected.player_url)
       #this should be its own method eventually
-      binding.pry
       information.each_with_index do |info, i|
-        if info[i] == "Team: "
-          selected.regular_season_team = "cucumber"
+        if info == "Team:"
+          selected.regular_season_team = information[i + 1]
+        elsif info == "Common Team Role(s):"
+          selected.role = information[i + 1]
+        elsif info == "Signature Hero:"
+          selected.signature_hero = information[i + 1]
         end
       end
       puts selected.regular_season_team
-      puts information
+      puts selected.role
+      puts selected.signature_hero
     end
   end
 
