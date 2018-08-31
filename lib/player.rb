@@ -6,7 +6,8 @@ class Player
 
   def initialize(name)
     @name = name
-    @player_url = "https://liquipedia.net/overwatch/#{@name.capitalize}"
+    url_name = name.slice(0,1).capitalize + name.slice(1..-1)
+    @player_url = "https://liquipedia.net/overwatch/#{url_name}"
   end
 
   def self.all

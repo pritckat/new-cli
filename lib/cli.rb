@@ -46,9 +46,16 @@ class CLI
     else
       index = input.to_i - 1
       if index >=0 && index <= 24
-        puts "#{Team.all[index].name}:"
+        selected = Team.all[index]
+        Scraper.scrape_team_profile(selected)
+        selected.apply_attributes
+        puts "#{selected.name}"
+        puts "================="
+        puts "Region: #{selected.region}"
+        puts "Coach: #{selected.coach}"
+        puts "Players:"
         Team.all[index].roster.each do |player|
-          puts player.name
+          puts "#{player.name}"
         end
         list_player_information
       else
@@ -60,7 +67,7 @@ class CLI
 
   def list_players
     Player.all.each_with_index do |player, index|
-      puts "#{index + 1}. #{player.name}"
+      puts "#{index + 1}. #{player.name} -- #{player.player_url}"
     end
     list_player_information
   end
