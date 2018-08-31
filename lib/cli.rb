@@ -78,6 +78,13 @@ class CLI
       puts selected.regular_season_team
       puts selected.role
       puts selected.signature_hero
+      puts "Would you like to see another player? Y/n"
+      new_input = gets.strip
+      if new_input == 'Y' || new_input == 'y'
+        list_player_information
+      else
+        menu
+      end
     end
   end
 
