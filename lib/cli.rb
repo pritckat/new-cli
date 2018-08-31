@@ -45,7 +45,7 @@ class CLI
       self.menu
     else
       index = input.to_i - 1
-      puts Team.all[index]
+      puts Team.all[index].name
     end
   end
 
@@ -55,12 +55,12 @@ class CLI
     end
     puts "Please type the number of the player you'd like to look at."
     puts "Or type 'menu' to return to the main menu."
-    input = gets
+    input = gets.strip
     if input == 'menu'
       self.menu
     else
       index = input.to_i - 1
-      puts Player.all[index]
+      puts Player.all[index].name
     end
   end
 
@@ -70,7 +70,7 @@ class CLI
     end
     puts "Please type the number of the character you'd like to look at."
     puts "Or type 'menu' to return to the main menu."
-    input = gets
+    input = gets.strip
     if input == 'menu'
       self.menu
     else
