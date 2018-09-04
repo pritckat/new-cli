@@ -47,6 +47,7 @@ class Scraper
   end
 
   def self.scrape_team_profile(team)
+    puts '******Scraping'
     information = []
     html = open(team.url)
     @team_page = Nokogiri::HTML(html)

@@ -51,8 +51,10 @@ class Cli
       index = input.to_i - 1
       if index >=0 && index <= 24
         selected = Team.all[index]
-        Scraper.scrape_team_profile(selected)
-        selected.apply_attributes
+        if !selected.region
+          Scraper.scrape_team_profile(selected)
+          selected.apply_attributes
+        end
         puts "#{selected.name}"
         puts "================="
         puts "Region: #{selected.region}"
