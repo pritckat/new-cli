@@ -54,7 +54,13 @@ class Scraper
     @team_page.css(".infobox-cell-2").each do |info|
       information << info.text
     end
-    information
+    information.each_with_index do |info, i|
+      if info == "Region:"
+        team.region = information[i + 1]
+      elsif info == "Coaches:"
+        team.coach = information[i + 1]
+      end
+    end
 
   end
 

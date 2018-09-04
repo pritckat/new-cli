@@ -53,7 +53,6 @@ class Cli
         selected = Team.all[index]
         if !selected.region
           Scraper.scrape_team_profile(selected)
-          selected.apply_attributes
         end
         puts "#{selected.name}"
         puts "================="

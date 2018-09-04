@@ -14,16 +14,16 @@ class Team
     @@all
   end
 
-  def apply_attributes
-    information = Scraper.scrape_team_profile(self)
-    information.each_with_index do |info, i|
-      if info == "Region:"
-        self.region = information[i + 1]
-      elsif info == "Coaches:"
-        self.coach = information[i + 1]
-      end
-    end
+#  def apply_attributes(information)
+#    #information = Scraper.scrape_team_profile(self)
+#    information.each_with_index do |info, i|
+#      if info == "Region:"
+#        self.region = information[i + 1]
+#      elsif info == "Coaches:"
+#        self.coach = information[i + 1]
+#      end
+#    end
     #binding.pry
-  end
+#  end
 
 end

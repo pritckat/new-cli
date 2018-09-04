@@ -1,9 +1,7 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/cli.rb"
-require_relative "../lib/player.rb"
-require_relative "../lib/teams.rb"
-require_relative "../lib/scraper.rb"
+require_relative "../lib/new-cli"
+
 
 
 Cli.new
